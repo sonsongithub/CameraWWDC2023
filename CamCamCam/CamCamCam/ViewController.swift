@@ -80,6 +80,8 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         let discoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera, .external], mediaType: .video, position: .unspecified)
         guard discoverySession.devices.count > 0 else { return }
         
+        print(discoverySession.devices.count)
+        
         if let output = addcamera(device: discoverySession.devices[0]) {
             captureOutputs.append(output)
         }
@@ -87,6 +89,9 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
             captureOutputs.append(output)
         }
         if let output = addcamera(device: discoverySession.devices[2]) {
+            captureOutputs.append(output)
+        }
+        if let output = addcamera(device: discoverySession.devices[3]) {
             captureOutputs.append(output)
         }
     
@@ -111,6 +116,11 @@ class ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDele
         imageView3.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(imageView3)
         self.imageViews.append(imageView3)
+        
+        let imageView4 = UIImageView(frame: CGRect(x: w/2, y: h/2, width: w/2, height: h/2))
+        imageView4.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(imageView4)
+        self.imageViews.append(imageView4)
     }
 }
 
